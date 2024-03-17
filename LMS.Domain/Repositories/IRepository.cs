@@ -8,9 +8,9 @@ namespace LMS.Domain.Repositories
 {
     public interface IRepository<T>
     {
-        Task<List<T>> GetAll();
-        Task<int> CreateAsync(T baseEo);
-        Task<int> UpdateAsync(T baseEo);
-        Task DeleteAsync(T baseEo);
+        List<T> GetAll();
+        Guid CreateAsync(T baseEo);
+        void UpdateAsync(T baseEo, int UpdatedById);
+        void DeleteAsync(T baseEo, int DeletedById);
     }
 }

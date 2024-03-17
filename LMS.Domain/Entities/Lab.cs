@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LMS.Domain.Entities
 {
-    public class LabTest : BaseEntity<Guid>
+    public class Lab : BaseEntity<Guid>
     {
 
     }
