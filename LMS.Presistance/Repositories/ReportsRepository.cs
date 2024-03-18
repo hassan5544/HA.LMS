@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace LMS.Presistance.Repositories
 {
-    public class PatientRepository : IPatientRepository
+    public class ReportsRepository : IReportsRepository
     {
-        private static readonly List<Patient> _items = new List<Patient>();
+        private static readonly List<Reports> _items = new List<Reports>();
 
-        public Guid CreateAsync(Patient baseEo)
+        public Guid CreateAsync(Reports baseEo)
         {
             _items.Add(baseEo);
             return baseEo.Id;
         }
 
-        public void DeleteAsync(Patient baseEo, int DeletedById)
+        public void DeleteAsync(Reports baseEo, int DeletedById)
         {
             var selectedItem = _items.Where(x => x.Id == baseEo.Id).SingleOrDefault();
             if (selectedItem != null)
@@ -31,12 +31,12 @@ namespace LMS.Presistance.Repositories
                 throw new ArgumentException("Selected object dosnt exists");
         }
 
-        public List<Patient> GetAll()
+        public List<Reports> GetAll()
         {
             return _items;
         }
 
-        public void UpdateAsync(Patient baseEo, int UpdatedById)
+        public void UpdateAsync(Reports baseEo, int UpdatedById)
         {
             var selectedItem = _items.Where(x => x.Id == baseEo.Id).SingleOrDefault();
             if (selectedItem != null)
