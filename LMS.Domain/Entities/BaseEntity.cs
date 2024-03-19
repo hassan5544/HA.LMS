@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LMS.Domain.Entities
+﻿namespace LMS.Domain.Entities
 {
     public class BaseEntity<T>
     {
@@ -18,5 +11,14 @@ namespace LMS.Domain.Entities
         public bool IsDeleted { get; protected set; }
         public DateTime DeleteDate { get; protected set; }
         public int DeleteUser { get; protected set; }
+
+        public void SetDeleted(int DeletedBy)
+        {
+            DeleteDate = DateTime.Now;
+            DeleteUser = DeletedBy;
+            IsDeleted = true;
+        }
+
+        public void
     }
 }

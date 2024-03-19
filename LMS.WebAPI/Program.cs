@@ -1,3 +1,6 @@
+using LMS.Domain.Extentions;
+using LMS.WebAPI.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +10,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 var app = builder.Build();
+
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigureExceptionHandler(logger);
+if (app.Environment.IsProduction())
+    app.UseHsts();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
